@@ -12,5 +12,8 @@
       "coverage/lcov-report/*.js"
     ]
   },
-  "rules": { "deprecation": { "severity": "warning" } }
+  "rules": {
+    "deprecation": { "severity": "warning" },
+    "interface-name": [true, "never-prefix"]
+  }
 }
