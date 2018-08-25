@@ -9,7 +9,6 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -22,9 +21,7 @@
     "node_modules",
     "build",
     "scripts",
-    "acceptance-tests",
-    "webpack",
     "jest",
-    "src/setupTests.ts"
+    ".storybook"
   ]
 }
