@@ -1,12 +1,101 @@
 import { action } from '@storybook/addon-actions'
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Button } from '../../components'
+import { Button, ButtonType } from '../../components'
+import '../../components/button/style.scss'
+
+const btnClicked = 'button clicked'
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)
   .add('button', () => {
     const content = text('content', 'button')
-    return <Button onClick={action('button clicked')}>{content}</Button>
+    const plain = boolean('plain', false)
+    const round = boolean('round', false)
+    const square = boolean('square', false)
+    const loading = boolean('loading', false)
+    const disabled = boolean('disabled', false)
+
+    return (
+      <div>
+        <Button
+          type={ButtonType.Default}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Primary}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Success}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Warning}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Danger}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Info}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+        <Button
+          type={ButtonType.Text}
+          plain={plain}
+          round={round}
+          square={square}
+          loading={loading}
+          disabled={disabled}
+          onClick={action(btnClicked)}
+        >
+          {content}
+        </Button>
+      </div>
+    )
   })

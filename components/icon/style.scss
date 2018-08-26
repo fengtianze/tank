@@ -1,0 +1,27 @@
+@import '../theme/_var';
+@import '../theme/_mixin';
+
+.tk-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+}
+
+.tk-icon-spinner {
+  animation: rotating 2s linear infinite;
+}
+
+.tk-icon + .tk-icon {
+  margin-left: 4px;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

@@ -3,17 +3,20 @@
     "tslint:recommended",
     "tslint-react",
     "tslint-config-prettier",
+    "tslint-plugin-prettier",
     "tslint-sonarts"
   ],
   "linterOptions": {
-    "exclude": [
-      "config/**/*.js",
-      "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
-    ]
+    "exclude": ["node_modules", "coverage", "build"]
   },
   "rules": {
+    "prettier": true,
+    "object-literal-sort-keys": false,
+    "no-unused-expression": true,
     "deprecation": { "severity": "warning" },
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single"],
+    "no-consecutive-blank-lines": [true, 1]
   }
 }

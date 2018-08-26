@@ -1,0 +1,197 @@
+// Colors
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary: #009ce3;
+$color-success: #1bb393;
+$color-warning: #f8ac58;
+$color-danger: #eb6262;
+$color-error: #eb6262;
+$color-info: #ccc;
+
+$color-primary-light: mix($color-white, $color-primary, 60%);
+$color-success-light: mix($color-white, $color-success, 60%);
+$color-warning-light: mix($color-white, $color-warning, 60%);
+$color-error-light: mix($color-white, $color-error, 60%);
+$color-info-light: mix($color-white, $color-info, 60%);
+
+$color-primary-lighter: mix($color-white, $color-primary, 70%);
+$color-success-lighter: mix($color-white, $color-success, 70%);
+$color-warning-lighter: mix($color-white, $color-warning, 70%);
+$color-error-lighter: mix($color-white, $color-error, 70%);
+$color-info-lighter: mix($color-white, $color-info, 70%);
+
+$color-primary-extra-light: mix($color-white, $color-primary, 90%);
+$color-success-extra-light: mix($color-white, $color-success, 90%);
+$color-warning-extra-light: mix($color-white, $color-warning, 90%);
+$color-error-extra-light: mix($color-white, $color-error, 90%);
+$color-info-extra-light: mix($color-white, $color-info, 90%);
+
+$color-primary-ultra-light: mix($color-white, $color-primary, 95%);
+$color-success-ultra-light: mix($color-white, $color-success, 95%);
+$color-warning-ultra-light: mix($color-white, $color-warning, 95%);
+$color-error-ultra-light: mix($color-white, $color-error, 95%);
+$color-info-ultra-light: mix($color-white, $color-info, 95%);
+
+$color-primary-dark: mix($color-black, $color-primary, 10%);
+$color-success-dark: mix($color-black, $color-success, 10%);
+$color-warning-dark: mix($color-black, $color-warning, 10%);
+$color-error-dark: mix($color-black, $color-error, 10%);
+$color-info-dark: mix($color-black, $color-info, 10%);
+
+$color-primary-darker: mix($color-black, $color-primary, 20%);
+$color-success-darker: mix($color-black, $color-success, 20%);
+$color-warning-darker: mix($color-black, $color-warning, 20%);
+$color-error-darker: mix($color-black, $color-error, 20%);
+$color-info-darker: mix($color-black, $color-info, 20%);
+
+$color-text-main: #333;
+$color-text-secondary: #666;
+$color-text-help: #999;
+$color-text-placeholder: #ccc;
+
+$color-disabled-bg: #f2f2f2;
+
+// Font
+$font-size-extra-large: 20px;
+$font-size-larger: 18px;
+$font-size-large: 16px;
+$font-size-regular: 14px;
+$font-size-small: 12px;
+
+$font-weight-bold: 500;
+$font-weight-normal: 400;
+
+$line-height-extra-large: 28px;
+$line-height-larger: 24px;
+$line-height-large: 22px;
+$line-height-regular: 20px;
+$line-height-small: 16px;
+
+// Height
+$height-large: 40px;
+$height-medium: 32px;
+$height-small: 28px;
+$height-mini: 24px;
+
+// Border
+$border-radius: 2px;
+$border-width: 1px;
+$border-style: solid;
+
+// Outline
+$outline-width: 3px;
+$outline-color-primary: mix($color-white, $color-primary, 60%);
+$outline-color-success: mix($color-white, $color-success, 60%);
+$outline-color-warning: mix($color-white, $color-warning, 60%);
+$outline-color-error: mix($color-white, $color-error, 60%);
+$outline-color-info: mix($color-white, $color-info, 60%);
+
+// Button
+$button-border-style: $border-style;
+$button-border-radius: $border-radius;
+$button-border-width: $border-width;
+
+$button-height: $height-medium;
+$button-font-size: $font-size-regular;
+$button-padding-hoz: 16px - $button-border-width;
+
+$button-default-content: $color-text-main;
+$button-default-content-hover: $color-primary;
+$button-default-content-active: $color-primary;
+$button-default-content-focus: $color-text-main;
+$button-default-content-disabled: $color-info;
+$button-default-bg: $color-white;
+$button-default-bg-hover: $color-primary-ultra-light;
+$button-default-bg-active: $color-primary-extra-light;
+$button-default-bg-focus: $color-white;
+$button-default-bg-disabled: $color-disabled-bg;
+$button-default-border: $color-info;
+$button-default-border-hover: $color-primary;
+$button-default-border-active: $color-primary;
+$button-default-border-focus: $color-primary;
+$button-default-border-disabled: $color-info;
+
+$button-primary-content: $color-white;
+$button-primary-content-hover: $color-white;
+$button-primary-content-active: $color-white;
+$button-primary-content-focus: $color-white;
+$button-primary-content-disabled: $color-white;
+$button-primary-bg: $color-primary;
+$button-primary-bg-hover: $color-primary-dark;
+$button-primary-bg-active: $color-primary-darker;
+$button-primary-bg-focus: $color-primary;
+$button-primary-bg-disabled: $color-primary-lighter;
+$button-primary-border: $color-primary;
+$button-primary-border-hover: $color-primary-dark;
+$button-primary-border-active: $color-primary-darker;
+$button-primary-border-focus: $color-primary;
+$button-primary-border-disabled: $color-primary-lighter;
+
+$button-success-content: $color-white;
+$button-success-content-hover: $color-white;
+$button-success-content-active: $color-white;
+$button-success-content-focus: $color-white;
+$button-success-content-disabled: $color-white;
+$button-success-bg: $color-success;
+$button-success-bg-hover: $color-success-dark;
+$button-success-bg-active: $color-success-darker;
+$button-success-bg-focus: $color-success;
+$button-success-bg-disabled: $color-success-lighter;
+$button-success-border: $color-success;
+$button-success-border-hover: $color-success-dark;
+$button-success-border-active: $color-success-darker;
+$button-success-border-focus: $color-success;
+$button-success-border-disabled: $color-success-lighter;
+
+$button-warning-content: $color-white;
+$button-warning-content-hover: $color-white;
+$button-warning-content-active: $color-white;
+$button-warning-content-focus: $color-white;
+$button-warning-content-disabled: $color-white;
+$button-warning-bg: $color-warning;
+$button-warning-bg-hover: $color-warning-dark;
+$button-warning-bg-active: $color-warning-darker;
+$button-warning-bg-focus: $color-warning;
+$button-warning-bg-disabled: $color-warning-lighter;
+$button-warning-border: $color-warning;
+$button-warning-border-hover: $color-warning-dark;
+$button-warning-border-active: $color-warning-darker;
+$button-warning-border-focus: $color-warning;
+$button-warning-border-disabled: $color-warning-lighter;
+
+$button-danger-content: $color-white;
+$button-danger-content-hover: $color-white;
+$button-danger-content-active: $color-white;
+$button-danger-content-focus: $color-white;
+$button-danger-content-disabled: $color-white;
+$button-danger-bg: $color-error;
+$button-danger-bg-hover: $color-error-dark;
+$button-danger-bg-active: $color-error-darker;
+$button-danger-bg-focus: $color-error;
+$button-danger-bg-disabled: $color-error-lighter;
+$button-danger-border: $color-error;
+$button-danger-border-hover: $color-error-dark;
+$button-danger-border-active: $color-error-darker;
+$button-danger-border-focus: $color-error;
+$button-danger-border-disabled: $color-error-lighter;
+
+$button-info-content: $color-white;
+$button-info-content-hover: $color-white;
+$button-info-content-active: $color-white;
+$button-info-content-focus: $color-white;
+$button-info-content-disabled: $color-white;
+$button-info-bg: $color-info;
+$button-info-bg-hover: $color-info-dark;
+$button-info-bg-active: $color-info-darker;
+$button-info-bg-focus: $color-info;
+$button-info-bg-disabled: $color-info-lighter;
+$button-info-border: $color-info;
+$button-info-border-hover: $color-info-dark;
+$button-info-border-active: $color-info-darker;
+$button-info-border-focus: $color-info;
+$button-info-border-disabled: $color-info-lighter;
+
+$text-button-padding-hoz: 4px - $button-border-width;
+$text-button-height: 22px;
+$text-button-font-size: $font-size-large;

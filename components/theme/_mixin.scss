@@ -1,0 +1,17 @@
+@import './_var';
+
+@mixin outline-shadow($color: $outline-color-primary) {
+  box-shadow: 0 0 0 $outline-width $color;
+}
+
+@mixin popper-shadow() {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+}
+
+@mixin model-shadow() {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+@mixin state-transition($target: all) {
+  transition: $target 0.3s ease;
+}
