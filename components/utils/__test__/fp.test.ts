@@ -9,7 +9,7 @@ describe('Pure Functions', () => {
 
       expect(curriedFn()).toBe(0)
       expect(testFn.mock.calls.length).toBe(1)
-      expect(testFn.mock.calls[0][0]).toBeUndefined()
+      expect(testFn.mock.calls[0].length).toBe(0)
     })
 
     it('should curry 1 arguments fn correctly', () => {
