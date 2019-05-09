@@ -1,26 +1,22 @@
-import * as React from 'react'
+import React from 'react'
 import { IconRegistry } from './icon-registry'
 import { IconProps } from './types'
 
-export class Icon extends React.PureComponent<IconProps> {
-  public static defaultProps: IconProps = {
-    name: '',
-    className: '',
-  }
+IconRegistry.getInstance().registryDefaultIcons()
 
-  constructor(props: IconProps) {
-    super(props)
-    IconRegistry.getInstance().registryDefaultIcons()
-  }
+Icon.defaultProps = {
+  name: '',
+  className: '',
+} as IconProps
 
-  public render() {
-    const { className, name, ...restProps } = this.props
+export function Icon(props: IconProps) {
+  const { className, name, ...restProps } = props
 
-    const classString = `tk-icon ${name} ${className}`
-    return (
-      <svg {...restProps} className={classString}>
-        <use xlinkHref={`#${name}`} />
-      </svg>
-    )
-  }
+  const classString = `tk-icon ${name} ${className}`
+
+  return (
+    <svg {...restProps} className={classString}>
+      <use xlinkHref={`#${name}`} />
+    </svg>
+  )
 }

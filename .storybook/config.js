@@ -1,4 +1,10 @@
-import { configure } from '@storybook/react'
+import { configure, addParameters } from '@storybook/react'
+
+addParameters({
+  options: {
+    panelPosition: 'right',
+  },
+})
 
 function loadStories() {
   require('../stories/index.ts')
