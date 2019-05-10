@@ -15,3 +15,12 @@
 @mixin state-transition($target: all) {
   transition: $target 0.3s ease;
 }
+
+@mixin scroll-bar($color: rgba(0, 0, 0, 0.3)) {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+  }
+}

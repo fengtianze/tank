@@ -15,8 +15,6 @@
     "no-unused-expression": true,
     "deprecation": { "severity": "warning" },
     "interface-name": [true, "never-prefix"],
-    "semicolon": [true, "never"],
-    "quotemark": [true, "single"],
     "no-consecutive-blank-lines": [true, 1]
   }
 }

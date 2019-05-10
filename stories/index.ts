@@ -1,3 +1,4 @@
-import '../components/theme/style.scss'
+import '../components/tank.scss'
 
 import './button'
+import './dialog'
