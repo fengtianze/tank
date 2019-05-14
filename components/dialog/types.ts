@@ -1,14 +1,18 @@
 import { HTMLProps, ReactNode } from 'react'
+import { TKProps } from '../types'
 
-export type DialogProps = HTMLProps<HTMLDivElement> & {
-  visible: boolean
-  width?: string
-  mask?: boolean
-  header?: ReactNode
-  footer?: ReactNode
-  content?: ReactNode
-  onClose?: () => void
-}
+export type DialogProps = TKProps<
+  HTMLProps<HTMLDivElement>,
+  {
+    visible: boolean
+    width: string
+    mask: boolean
+    header: ReactNode
+    footer: ReactNode
+    content: ReactNode
+    onClose: () => void
+  }
+>
 
 export interface ConfirmDialogProps {
   title: string

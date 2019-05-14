@@ -1,0 +1,53 @@
+@import '../theme/_var';
+@import '../theme/_mixin';
+
+.tk-input {
+  display: inline-block;
+  width: 100%;
+  height: $input-medium-height;
+  padding: 0 $input-medium-padding-hoz;
+  border: $input-border-style $input-border-width $input-border-color;
+  border-radius: $input-border-radius;
+  background-color: $input-bg-color;
+  font-size: $input-medium-font-size;
+  color: $input-color;
+  outline: none;
+  text-overflow: ellipsis;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:invalid,
+  &:required {
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $input-border-color-primary;
+  }
+
+  &[readonly] {
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
+    cursor: default;
+  }
+
+  &[disabled] {
+    color: $input-placeholder-color;
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
+    cursor: not-allowed;
+  }
+}

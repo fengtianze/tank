@@ -13,7 +13,7 @@ containerEl.setAttribute('class', 'tk-dialog-container')
 bodyEl.appendChild(containerEl)
 
 export const Dialog: FC<DialogProps> & {
-  confirm: (props: ConfirmDialogProps) => void
+  confirm: (props: ConfirmDialogProps) => () => void
 } = props => {
   const {
     visible,
@@ -35,7 +35,7 @@ export const Dialog: FC<DialogProps> & {
         <Fragment>
           {mask && <div className="tk-dialog-mask" />}
           <div className="tk-dialog-overlay">
-            <div className={classString} {...restProps} style={{ width }}>
+            <div {...restProps} className={classString} style={{ width }}>
               {header && (
                 <div className={bem.e('header')}>
                   {header}
@@ -86,4 +86,6 @@ Dialog.confirm = props => {
   }
 
   ReactDOM.render(<ConfirmDialog {...config} />, rootEl)
+
+  return destory
 }
