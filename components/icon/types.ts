@@ -1,4 +1,5 @@
-export interface IconProps {
+import { SVGProps } from 'react'
+
+export type IconProps = SVGProps<SVGSVGElement> & {
   name: string
-  className?: string
 }

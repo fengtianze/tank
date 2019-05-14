@@ -1,15 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { IconRegistry } from './icon-registry'
 import { IconProps } from './types'
 
 IconRegistry.getInstance().registryDefaultIcons()
 
-Icon.defaultProps = {
-  name: '',
-  className: '',
-} as IconProps
-
-export function Icon(props: IconProps) {
+export const Icon: FC<IconProps> = props => {
   const { className, name, ...restProps } = props
 
   const classString = `tk-icon ${name} ${className}`
@@ -19,4 +14,9 @@ export function Icon(props: IconProps) {
       <use xlinkHref={`#${name}`} />
     </svg>
   )
+}
+
+Icon.defaultProps = {
+  name: '',
+  className: '',
 }

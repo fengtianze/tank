@@ -1,17 +1,11 @@
-import React, { MouseEventHandler } from 'react'
+import React, { FC, MouseEventHandler } from 'react'
 import { Icon } from '../icon'
 import { assertClass, Bem } from '../utils/class-helper'
 import { ButtonAttrType, ButtonProps, ButtonType } from './types'
 
 const bem = Bem.of('tk-button')
 
-Button.defaultProps = {
-  attrType: ButtonAttrType.Button,
-  type: ButtonType.Default,
-  className: '',
-} as ButtonProps
-
-export function Button(props: ButtonProps) {
+export const Button: FC<ButtonProps> = props => {
   const {
     type,
     plain,
@@ -53,4 +47,10 @@ export function Button(props: ButtonProps) {
       ) : null}
     </button>
   )
+}
+
+Button.defaultProps = {
+  attrType: ButtonAttrType.Button,
+  type: ButtonType.Default,
+  className: '',
 }

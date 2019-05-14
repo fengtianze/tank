@@ -1,16 +1,13 @@
-import { MouseEventHandler } from 'react'
+import { HTMLProps } from 'react'
 
-export interface ButtonProps {
-  readonly type?: ButtonType
-  readonly plain?: boolean
-  readonly round?: boolean
-  readonly square?: boolean
-  readonly loading?: boolean
-  readonly disabled?: boolean
-  readonly className?: string
-  readonly attrType?: ButtonAttrType
-  readonly onClick?: MouseEventHandler<HTMLButtonElement>
-  readonly children?: any
+export type ButtonProps = HTMLProps<HTMLButtonElement> & {
+  type?: ButtonType
+  plain?: boolean
+  round?: boolean
+  square?: boolean
+  loading?: boolean
+  disabled?: boolean
+  attrType?: ButtonAttrType
 }
 
 export enum ButtonType {
