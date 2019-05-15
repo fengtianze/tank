@@ -8,7 +8,6 @@ export const Input: FC<InputProps> = props => {
   const { className, onChange, onValueChange, ...restProps } = props
 
   const classString = `${bem.b()} ${className}`
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event)

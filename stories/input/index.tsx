@@ -24,7 +24,7 @@ function Demo(props: {
 
   return (
     <div>
-      <div>value: "{value}"</div>
+      <div>value: {value}</div>
       <Input value={value} onValueChange={setValue} {...props} />
     </div>
   )

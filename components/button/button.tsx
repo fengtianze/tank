@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from 'react'
+import React, { FC, MouseEvent } from 'react'
 import { Icon } from '../icon'
 import { assertClass, Bem } from '../utils/class-helper'
 import { ButtonAttrType, ButtonProps, ButtonType } from './types'
@@ -19,14 +19,13 @@ export const Button: FC<ButtonProps> = props => {
     ...restProps
   } = props
 
-  const btnClass = `${bem.b(type)} ${assertClass({
+  const classString = `${bem.b(type)} ${assertClass({
     loading,
     plain,
     round,
     square,
   })} ${className}`
-
-  const handleClick: MouseEventHandler<HTMLButtonElement> = event => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (onClick) {
       onClick(event)
     }
@@ -36,7 +35,7 @@ export const Button: FC<ButtonProps> = props => {
     <button
       {...restProps}
       type={attrType}
-      className={btnClass}
+      className={classString}
       onClick={handleClick}
     >
       <span className={bem.e('content')}>{children}</span>

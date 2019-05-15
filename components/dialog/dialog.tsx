@@ -18,6 +18,7 @@ export const Dialog: FC<DialogProps> & {
   const {
     visible,
     className,
+    style,
     mask,
     children,
     content,
@@ -35,7 +36,11 @@ export const Dialog: FC<DialogProps> & {
         <Fragment>
           {mask && <div className="tk-dialog-mask" />}
           <div className="tk-dialog-overlay">
-            <div {...restProps} className={classString} style={{ width }}>
+            <div
+              {...restProps}
+              className={classString}
+              style={{ ...style, width }}
+            >
               {header && (
                 <div className={bem.e('header')}>
                   {header}
