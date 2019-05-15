@@ -10,10 +10,13 @@ storiesOf('Dialog', module)
     const width = text('width', '')
     const mask = boolean('mask', true)
 
-    return <Demo width={width} mask={mask} />
+    return <DialogDemo width={width} mask={mask} />
+  })
+  .add('confirm dialog', () => {
+    return <ConfirmDialogDemo />
   })
 
-function Demo(props: { width: string; mask: boolean }) {
+function DialogDemo(props: { width: string; mask: boolean }) {
   const [visible, setVisible] = useState(false)
   const openDialog = () => {
     setVisible(true)
@@ -22,29 +25,9 @@ function Demo(props: { width: string; mask: boolean }) {
     setVisible(false)
   }
 
-  const confirmDialog = () => {
-    const log = action('confirm dialog closed')
-
-    Dialog.confirm({
-      title: 'Are you sure?',
-      content:
-        'When clicked the OK button, this dialog will be closed after 1 second',
-      cancelText: 'NO',
-      confirmText: 'OK',
-      beforeConfirm: () => {
-        return new Promise(resolve => {
-          setTimeout(resolve, 1000)
-        })
-      },
-      onCancel: () => log('cancel'),
-      onConfirm: () => log('comfirm'),
-    })
-  }
-
   return (
     <div>
       <Button onClick={openDialog}>open dialog</Button>
-      <Button onClick={confirmDialog}>confirm dialog</Button>
       <Dialog
         visible={visible}
         header="What can Kubernetes do for you?"
@@ -71,6 +54,33 @@ function Demo(props: { width: string; mask: boolean }) {
         accumulated experience in container orchestration, combined with
         best-of-breed ideas from the community.
       </Dialog>
+    </div>
+  )
+}
+
+function ConfirmDialogDemo() {
+  const log = action('confirm dialog closed')
+
+  const confirmDialog = () => {
+    Dialog.confirm({
+      title: 'Are you sure?',
+      content:
+        'When clicked the OK button, this dialog will be closed after 1 second',
+      cancelText: 'NO',
+      confirmText: 'OK',
+      beforeConfirm: () => {
+        return new Promise(resolve => {
+          setTimeout(resolve, 1000)
+        })
+      },
+      onCancel: () => log('cancel'),
+      onConfirm: () => log('comfirm'),
+    })
+  }
+
+  return (
+    <div>
+      <Button onClick={confirmDialog}>confirm dialog</Button>
     </div>
   )
 }

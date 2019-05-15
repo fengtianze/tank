@@ -195,3 +195,22 @@ $button-info-border-disabled: $color-info-lighter;
 $text-button-padding-hoz: 4px - $button-border-width;
 $text-button-height: 22px;
 $text-button-font-size: $font-size-large;
+
+// Input
+$input-border-radius: $border-radius;
+$input-border-width: $border-width;
+$input-border-style: $border-style;
+$input-border-color: $color-info;
+$input-border-color-primary: $color-primary;
+$input-border-color-error: $color-error;
+$input-color: $color-text-main;
+$input-placeholder-color: $color-text-placeholder;
+$input-bg-color: $color-white;
+$input-bg-color-disabled: $color-disabled-bg;
+$input-prefix-icon-color: $input-placeholder-color;
+$input-suffix-icon-color: $color-text-help;
+$input-padding-hoz: 8px - $input-border-width;
+
+$input-medium-padding-hoz: 8px - $input-border-width;
+$input-medium-height: $height-medium;
+$input-medium-font-size: $font-size-regular;
