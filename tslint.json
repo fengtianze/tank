@@ -2,9 +2,10 @@
   "extends": [
     "tslint:recommended",
     "tslint-react",
+    "tslint-react-hooks",
+    "tslint-sonarts",
     "tslint-config-prettier",
-    "tslint-plugin-prettier",
-    "tslint-sonarts"
+    "tslint-plugin-prettier"
   ],
   "linterOptions": {
     "exclude": ["node_modules", "coverage", "build"]
@@ -12,9 +13,11 @@
   "rules": {
     "prettier": true,
     "object-literal-sort-keys": false,
-    "no-unused-expression": true,
     "deprecation": { "severity": "warning" },
     "interface-name": [true, "never-prefix"],
-    "no-consecutive-blank-lines": [true, 1]
+    "no-consecutive-blank-lines": [true, 1],
+    "no-unused-expression": true,
+    "no-commented-code": false,
+    "react-hooks-nesting": "error"
   }
 }
