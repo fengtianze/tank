@@ -4,17 +4,17 @@ import { TKProps } from '../types'
 export type ButtonProps = TKProps<
   HTMLProps<HTMLButtonElement>,
   {
-    type: ButtonType
+    type: 'submit' | 'reset' | 'button'
+    theme: ButtonTheme
     plain: boolean
     round: boolean
     square: boolean
     loading: boolean
     disabled: boolean
-    attrType: ButtonAttrType
   }
 >
 
-export enum ButtonType {
+export enum ButtonTheme {
   Default = 'default',
   Primary = 'primary',
   Success = 'success',
@@ -22,10 +22,4 @@ export enum ButtonType {
   Danger = 'danger',
   Info = 'info',
   Text = 'text',
-}
-
-export enum ButtonAttrType {
-  Submit = 'submit',
-  Button = 'button',
-  Reset = 'reset',
 }

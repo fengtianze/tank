@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useState } from 'react'
-import { Button, ButtonType } from '../button'
+import { Button, ButtonTheme } from '../button'
 import { Dialog } from './dialog'
 import { ConfirmDialogProps } from './types'
 
@@ -55,7 +55,7 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
         <Fragment>
           <Button onClick={cancel}>{cancelText}</Button>
           <Button
-            type={ButtonType.Primary}
+            theme={ButtonTheme.Primary}
             loading={confirming}
             onClick={confirm}
           >

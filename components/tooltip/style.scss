@@ -1,0 +1,108 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.tk-tooltip-trigger {
+  display: inline-block;
+}
+
+.tk-tooltip {
+  $arrow-outer: 16px;
+  $arrow-inner: 12px;
+
+  @mixin theme-colors($main, $border, $bg) {
+    color: $main;
+    border-color: $border;
+    background-color: $bg;
+
+    .tk-tooltip__arrow::before {
+      border-color: $border;
+      background-color: $bg;
+    }
+  }
+
+  padding: 4px 8px;
+  width: fit-content;
+  max-width: 160px;
+  border-radius: $border-radius;
+  border-width: $border-width;
+  border-style: $border-style;
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+
+  &__arrow {
+    position: absolute;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: $arrow-inner;
+      height: $arrow-inner;
+      border-width: $border-width;
+      border-style: $border-style;
+    }
+  }
+
+  &--default {
+    @include theme-colors($color-white, $color-text-main, $color-text-main);
+  }
+  &--success {
+    @include theme-colors($color-success, $color-success, $color-white);
+  }
+  &--warning {
+    @include theme-colors($color-warning, $color-warning, $color-white);
+  }
+  &--danger {
+    @include theme-colors($color-danger, $color-danger, $color-white);
+  }
+
+  &[x-placement^='bottom'] & {
+    &__arrow {
+      width: $arrow-outer;
+      height: $arrow-outer/2;
+      top: -$arrow-outer/2;
+      &::before {
+        left: 50%;
+        top: $arrow-outer - $arrow-inner;
+        transform: translateX(-50%) rotate(45deg);
+      }
+    }
+  }
+  &[x-placement^='top'] & {
+    &__arrow {
+      width: $arrow-outer;
+      height: $arrow-outer/2;
+      bottom: -$arrow-outer/2;
+      &::before {
+        left: 50%;
+        bottom: $arrow-outer - $arrow-inner;
+        transform: translateX(-50%) rotate(45deg);
+      }
+    }
+  }
+  &[x-placement^='left'] & {
+    &__arrow {
+      width: $arrow-outer/2;
+      height: $arrow-outer;
+      right: -$arrow-outer/2;
+      &::before {
+        top: 50%;
+        right: $arrow-outer - $arrow-inner;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+  &[x-placement^='right'] & {
+    &__arrow {
+      width: $arrow-outer/2;
+      height: $arrow-outer;
+      left: -$arrow-outer/2;
+      &::before {
+        top: 50%;
+        left: $arrow-outer - $arrow-inner;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+}

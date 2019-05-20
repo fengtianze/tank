@@ -9,4 +9,14 @@
   vertical-align: baseline;
 }
 
+.tk-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  pointer-events: none;
+}
+
 @import '../icon/style';

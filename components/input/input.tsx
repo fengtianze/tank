@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FC } from 'react'
+import React, { ChangeEvent, forwardRef } from 'react'
 import { Bem } from '../utils/class-helper'
 import { InputProps } from './types'
 
 const bem = Bem.of('tk-input')
 
-export const Input: FC<InputProps> = props => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { className, onChange, onValueChange, ...restProps } = props
 
   const classString = `${bem.b()} ${className}`
@@ -18,9 +18,14 @@ export const Input: FC<InputProps> = props => {
   }
 
   return (
-    <input {...restProps} className={classString} onChange={handleChange} />
+    <input
+      {...restProps}
+      ref={ref}
+      className={classString}
+      onChange={handleChange}
+    />
   )
-}
+})
 
 Input.defaultProps = {
   className: '',

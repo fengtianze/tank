@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import React, { Fragment, useState } from 'react'
-import { Button, ButtonType, Dialog } from '../../components'
+import { Button, ButtonTheme, Dialog } from '../../components'
 
 storiesOf('Dialog', module)
   .addDecorator(withKnobs)
@@ -27,14 +27,16 @@ function DialogDemo(props: { width: string; mask: boolean }) {
 
   return (
     <div>
-      <Button onClick={openDialog}>open dialog</Button>
+      <Button theme={ButtonTheme.Primary} onClick={openDialog}>
+        open dialog
+      </Button>
       <Dialog
         visible={visible}
         header="What can Kubernetes do for you?"
         footer={
           <Fragment>
             <Button onClick={closeDialog}>cancel</Button>
-            <Button type={ButtonType.Primary} onClick={closeDialog}>
+            <Button theme={ButtonTheme.Primary} onClick={closeDialog}>
               confirm
             </Button>
           </Fragment>
@@ -80,7 +82,9 @@ function ConfirmDialogDemo() {
 
   return (
     <div>
-      <Button onClick={confirmDialog}>confirm dialog</Button>
+      <Button theme={ButtonTheme.Primary} onClick={confirmDialog}>
+        confirm dialog
+      </Button>
     </div>
   )
 }
