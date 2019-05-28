@@ -1,20 +1,20 @@
-import React, { FC, Fragment } from 'react'
+import React, {
+  forwardRef,
+  ForwardRefExoticComponent,
+  Fragment,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react'
 import ReactDOM, { createPortal } from 'react-dom'
 import { Icon } from '../icon'
 import { Bem } from '../utils/class-helper'
+import containerEl from '../utils/overlay'
 import { ConfirmDialog } from './confirm-dialog'
 import { ConfirmDialogProps, DialogProps } from './types'
 
 const bem = Bem.of('tk-dialog')
 
-const bodyEl = document.querySelector('body') as HTMLBodyElement
-const containerEl = document.createElement('div')
-containerEl.setAttribute('class', 'tk-dialog-container')
-bodyEl.appendChild(containerEl)
-
-export const Dialog: FC<DialogProps> & {
-  confirm: (props: ConfirmDialogProps) => () => void
-} = props => {
+export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const {
     visible,
     className,
@@ -38,6 +38,7 @@ export const Dialog: FC<DialogProps> & {
           <div className="tk-dialog-overlay">
             <div
               {...restProps}
+              ref={ref}
               className={classString}
               style={{ ...style, width }}
             >
@@ -61,7 +62,9 @@ export const Dialog: FC<DialogProps> & {
         containerEl,
       )
     : null
-}
+}) as ForwardRefExoticComponent<
+  PropsWithoutRef<DialogProps> & RefAttributes<HTMLDivElement>
+> & { confirm: (props: ConfirmDialogProps) => () => void }
 
 Dialog.defaultProps = { visible: false, className: '', mask: true }
 

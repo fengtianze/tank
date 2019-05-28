@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
-import { Button, ButtonType } from '../../components'
+import { Button, ButtonTheme } from '../../components'
 
 const btnClicked = 'button clicked'
 
@@ -19,7 +19,7 @@ storiesOf('Button', module)
     return (
       <div>
         <Button
-          type={ButtonType.Default}
+          theme={ButtonTheme.Default}
           plain={plain}
           round={round}
           square={square}
@@ -30,7 +30,7 @@ storiesOf('Button', module)
           {content}
         </Button>
         <Button
-          type={ButtonType.Primary}
+          theme={ButtonTheme.Primary}
           plain={plain}
           round={round}
           square={square}
@@ -41,7 +41,7 @@ storiesOf('Button', module)
           {content}
         </Button>
         <Button
-          type={ButtonType.Success}
+          theme={ButtonTheme.Success}
           plain={plain}
           round={round}
           square={square}
@@ -52,7 +52,7 @@ storiesOf('Button', module)
           {content}
         </Button>
         <Button
-          type={ButtonType.Warning}
+          theme={ButtonTheme.Warning}
           plain={plain}
           round={round}
           square={square}
@@ -63,7 +63,7 @@ storiesOf('Button', module)
           {content}
         </Button>
         <Button
-          type={ButtonType.Danger}
+          theme={ButtonTheme.Danger}
           plain={plain}
           round={round}
           square={square}
@@ -74,7 +74,7 @@ storiesOf('Button', module)
           {content}
         </Button>
         <Button
-          type={ButtonType.Info}
+          theme={ButtonTheme.Info}
           plain={plain}
           round={round}
           square={square}
@@ -87,7 +87,7 @@ storiesOf('Button', module)
         <br />
         <br />
         <Button
-          type={ButtonType.Text}
+          theme={ButtonTheme.Text}
           plain={plain}
           round={round}
           square={square}

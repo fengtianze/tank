@@ -8,6 +8,7 @@
     "test:watch": "jest --watch",
     "test:clear": "jest --clearCache",
     "storybook": "start-storybook -p 9000 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook -o dist",
     "lint": "tslint -p . -t stylish",
     "lint:fix": "prettier --write '**/*.{ts,tsx,js,jsx,json,css,sass,scss}' && tslint -p . -t stylish --fix"
   },
@@ -52,5 +53,8 @@
     "tslint-sonarts": "^1.7.0",
     "typescript": "^3.0.1",
     "webpack": "^4.17.1"
+  },
+  "dependencies": {
+    "popper.js": "^1.15.0"
   }
 }

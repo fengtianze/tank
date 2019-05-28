@@ -1,4 +1,4 @@
-import React, { createContext, FC, Fragment, useCallback } from 'react'
+import React, { createContext, forwardRef, Fragment, useCallback } from 'react'
 import { Bem } from '../utils/class-helper'
 import { SelectContextType, SelectProps } from './types'
 
@@ -11,7 +11,7 @@ export const SelectContext = createContext<SelectContextType>({
   },
 })
 
-export const Select: FC<SelectProps> = props => {
+export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
   const { className, value, children, onValueChange, ...restProps } = props
 
   const classString = `${bem.b()} ${className}`
@@ -26,7 +26,7 @@ export const Select: FC<SelectProps> = props => {
 
   return (
     <Fragment>
-      <div {...restProps} className={classString}>
+      <div {...restProps} ref={ref} className={classString}>
         <input value={value} readOnly={true} />
       </div>
       <SelectContext.Provider
@@ -36,7 +36,7 @@ export const Select: FC<SelectProps> = props => {
       </SelectContext.Provider>
     </Fragment>
   )
-}
+})
 
 Select.defaultProps = {
   className: '',

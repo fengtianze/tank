@@ -1,16 +1,6 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
-.tk-dialog-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  pointer-events: none;
-}
-
 .tk-dialog-mask {
   position: absolute;
   top: 0;

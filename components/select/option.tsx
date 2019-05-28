@@ -1,11 +1,11 @@
-import React, { FC, useCallback, useContext } from 'react'
+import React, { forwardRef, useCallback, useContext } from 'react'
 import { Bem } from '../utils/class-helper'
 import { SelectContext } from './select'
 import { OptionProps } from './types'
 
 const bem = Bem.of('tk-option')
 
-export const Option: FC<OptionProps> = props => {
+export const Option = forwardRef<HTMLDivElement, OptionProps>((props, ref) => {
   const { className, children, value, ...restProps } = props
   const { selectedValue, handleOptionSelected } = useContext(SelectContext)
 
@@ -17,6 +17,7 @@ export const Option: FC<OptionProps> = props => {
   return (
     <div
       {...restProps}
+      ref={ref}
       className={classString}
       onClick={handleClick}
       style={{
@@ -26,7 +27,7 @@ export const Option: FC<OptionProps> = props => {
       {children}
     </div>
   )
-}
+})
 
 Option.defaultProps = {
   className: '',
