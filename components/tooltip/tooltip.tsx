@@ -2,6 +2,7 @@ import React, {
   forwardRef,
   Fragment,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useState,
 } from 'react'
@@ -46,6 +47,23 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
       setActivated(false)
     }
   }, [trigger])
+
+  useEffect(() => {
+    const callback = (event: MouseEvent) => {
+      if (
+        trigger === TooltipTrigger.Click &&
+        triggerEl &&
+        tooltipEl &&
+        !triggerEl.contains(event.target as HTMLElement) &&
+        !tooltipEl.contains(event.target as HTMLElement)
+      ) {
+        setActivated(false)
+      }
+    }
+    document.addEventListener('click', callback)
+    return () => document.removeEventListener('click', callback)
+  }, [trigger, triggerEl, tooltipEl])
+
   useImperativeHandle(
     ref,
     () => {
@@ -100,4 +118,5 @@ Tooltip.defaultProps = {
   theme: TooltipTheme.Default,
   placement: 'top',
   offset: '0,8',
+  arrow: true,
 }

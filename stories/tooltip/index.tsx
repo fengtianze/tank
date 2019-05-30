@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import React, { useCallback, useState } from 'react'
 import {
@@ -49,6 +49,7 @@ storiesOf('Tooltip', module)
       Tooltip.defaultProps!.placement!,
     )
     const offset = text('offset', Tooltip.defaultProps!.offset as string)
+    const arrow = boolean('arrow', Tooltip.defaultProps!.arrow!)
 
     return (
       <Demo
@@ -56,6 +57,7 @@ storiesOf('Tooltip', module)
         theme={theme}
         placement={placement as TooltipPlacement}
         offset={offset}
+        arrow={arrow}
       />
     )
   })

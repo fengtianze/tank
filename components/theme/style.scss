@@ -17,6 +17,10 @@
   height: 100vh;
   z-index: 1000;
   pointer-events: none;
+
+  & > * {
+    pointer-events: auto;
+  }
 }
 
 @import '../icon/style';
