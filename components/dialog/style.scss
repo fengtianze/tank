@@ -9,7 +9,6 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: -1;
-  pointer-events: auto;
 }
 
 .tk-dialog-overlay {
@@ -17,7 +16,6 @@
   height: 100%;
   overflow: auto;
   @include scroll-bar();
-  pointer-events: auto;
 }
 
 .tk-dialog {

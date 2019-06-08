@@ -1,4 +1,4 @@
-import Popper from 'popper.js'
+import Popper, { Modifiers } from 'popper.js'
 import React, {
   forwardRef,
   useCallback,
@@ -21,13 +21,16 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
       refEl,
       placement,
       offset,
+      arrow,
       ...restProps
     } = props
+    const classString = `${bem.b(theme)} ${className}`
     const [popperEl, setPopperEl] = useState<HTMLDivElement>()
-    const handlePopperRefChange = useCallback(el => {
+    const handlePopperRefChange = useCallback((el: HTMLDivElement) => {
       setPopperEl(el)
     }, [])
     const arrowRef = useRef<HTMLDivElement>(null)
+
     useImperativeHandle(
       ref,
       () => {
@@ -39,17 +42,16 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
       if (!refEl || !popperEl) {
         return
       }
+      const modifiers: Modifiers = { offset: { offset } }
+      if (arrowRef.current) {
+        modifiers.arrow = { element: arrowRef.current }
+      }
       const popper = new Popper(refEl, popperEl, {
         placement,
-        modifiers: {
-          arrow: { element: arrowRef.current! },
-          offset: { offset },
-        },
+        modifiers,
       })
       return popper.destroy.bind(popper)
     }, [refEl, popperEl, placement, offset])
-
-    const classString = `${bem.b(theme)} ${className}`
 
     return theme === TooltipTheme.Empty ? (
       <div {...restProps} ref={handlePopperRefChange}>
@@ -58,7 +60,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
     ) : (
       <div {...restProps} ref={handlePopperRefChange} className={classString}>
         <div className={bem.e('content')}>{children}</div>
-        <div ref={arrowRef} className={bem.e('arrow')} />
+        {arrow && <div ref={arrowRef} className={bem.e('arrow')} />}
       </div>
     )
   },

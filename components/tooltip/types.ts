@@ -6,6 +6,7 @@ interface BaseProps {
   theme: TooltipTheme
   placement: TooltipPlacement
   offset: number | string
+  arrow: boolean
 }
 
 export type TooltipProps = TKProps<
