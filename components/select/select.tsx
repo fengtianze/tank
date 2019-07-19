@@ -10,6 +10,7 @@ import React, {
 import { Tooltip, TooltipRef, TooltipTheme, TooltipTrigger } from '../tooltip'
 import { Bem } from '../utils/class-helper'
 import { SelectContextType, SelectProps } from './types'
+import { Icon } from '../icon'
 
 const bem = Bem.of('tk-select')
 
@@ -71,6 +72,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
         >
           <input className={bem.e('input')} value={value} readOnly={true} />
         </Tooltip>
+        <Icon className={bem.e('arrow')} name="tk-angle-down"></Icon>
       </div>
     </Fragment>
   )
@@ -80,4 +82,4 @@ Select.defaultProps = {
   className: '',
 }
 
-Select.displayName="TkSelect"
+Select.displayName = 'TkSelect'

@@ -2,6 +2,8 @@
 @import '../style/option-style.scss';
 
 .tk-select {
+  position: relative;
+
   &,
   & > .tk-tooltip-trigger {
     display: inline-block;
@@ -16,6 +18,16 @@
   &__options {
     @include options-container;
     transition: all 3s ease;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: $input-medium-padding-hoz;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $font-size-large;
+    color: $color-text-main;
+    pointer-events: none;
   }
 }
 

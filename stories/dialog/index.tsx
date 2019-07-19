@@ -35,10 +35,10 @@ function DialogDemo(props: { width: string; mask: boolean }) {
         header="What can Kubernetes do for you?"
         footer={
           <Fragment>
-            <Button onClick={closeDialog}>cancel</Button>
             <Button theme={ButtonTheme.Primary} onClick={closeDialog}>
               confirm
             </Button>
+            <Button onClick={closeDialog}>cancel</Button>
           </Fragment>
         }
         onClose={closeDialog}

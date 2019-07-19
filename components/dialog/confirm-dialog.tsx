@@ -53,7 +53,6 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
       content={content}
       footer={
         <Fragment>
-          <Button onClick={cancel}>{cancelText}</Button>
           <Button
             theme={ButtonTheme.Primary}
             loading={confirming}
@@ -61,6 +60,7 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
           >
             {confirmText}
           </Button>
+          <Button onClick={cancel}>{cancelText}</Button>
         </Fragment>
       }
     />
