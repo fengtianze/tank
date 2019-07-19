@@ -24,8 +24,8 @@ export class IconRegistry {
 
     const host = document.createElement('div')
     host.setAttribute('style', 'display: none;')
-    host.appendChild(doc.querySelector('svg') as SVGSVGElement)
+    host.appendChild(doc.querySelector('svg'))
 
-    document.querySelector('body')!.appendChild(host)
+    document.querySelector('body').appendChild(host)
   }
 }

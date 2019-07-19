@@ -1,0 +1,51 @@
+@import '../theme/_var';
+@import '../theme/_mixin';
+
+@mixin option-style {
+  padding: 0 $select-options-padding;
+  height: $input-medium-height;
+  line-height: $input-medium-height;
+  font-size: $input-medium-font-size;
+  color: $color-text-main;
+  background-color: $color-white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+
+  &:not(.is-multi).is-selected {
+    color: $color-primary;
+    background-color: $color-primary-extra-light;
+  }
+
+  &:hover,
+  &.is-focused {
+    background-color: $color-primary-ultra-light;
+  }
+
+  &.is-disabled {
+    color: $color-text-placeholder;
+    background-color: $color-white;
+    cursor: not-allowed;
+  }
+}
+
+@mixin options-container {
+  padding: $select-options-padding 0;
+  border-radius: $border-radius;
+  background-color: $color-white;
+  @include popper-shadow;
+
+  &__content {
+    max-height: $select-options-max-height;
+    position: relative;
+    overflow: auto;
+    @include scroll-bar();
+  }
+
+  &__placeholder {
+    color: $color-text-placeholder;
+    font-size: $font-size-regular;
+    text-align: center;
+  }
+}

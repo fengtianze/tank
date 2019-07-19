@@ -3,6 +3,8 @@ import React, {
   forwardRef,
   Fragment,
   useCallback,
+  useImperativeHandle,
+  useRef,
   useState,
 } from 'react'
 import { Tooltip, TooltipRef, TooltipTheme, TooltipTrigger } from '../tooltip'
@@ -23,13 +25,20 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
 
   const classString = `${bem.b()} ${className}`
   const [tooltipRef, setTooltipRef] = useState<TooltipRef>()
+  const [compWidth, setCompWidth] = useState<string>('auto')
+  const compRef = useRef<HTMLDivElement>(null)
+
+  useImperativeHandle(ref, () => {
+    return compRef.current
+  })
+
   const handleOptionSelected = useCallback(
     (v: any) => {
       if (onValueChange) {
         onValueChange(v)
       }
       if (tooltipRef) {
-        tooltipRef.destory()
+        tooltipRef.destroy()
       }
     },
     [onValueChange, tooltipRef],
@@ -37,17 +46,21 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
   const handleTooltipRefChange = useCallback(ins => {
     setTooltipRef(ins)
   }, [])
+  const handleTooltipOpen = useCallback(() => {
+    setCompWidth(compRef.current.offsetWidth + 'px')
+  }, [])
 
   return (
     <Fragment>
-      <div {...restProps} ref={ref} className={classString}>
+      <div {...restProps} ref={compRef} className={classString}>
         <Tooltip
           ref={handleTooltipRefChange}
           trigger={TooltipTrigger.Click}
           theme={TooltipTheme.Empty}
           placement="bottom-start"
+          onOpen={handleTooltipOpen}
           content={
-            <div className={bem.e('options')}>
+            <div className={bem.e('options')} style={{ width: compWidth }}>
               <SelectContext.Provider
                 value={{ selectedValue: value, handleOptionSelected }}
               >
@@ -56,7 +69,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
             </div>
           }
         >
-          <input value={value} readOnly={true} />
+          <input className={bem.e('input')} value={value} readOnly={true} />
         </Tooltip>
       </div>
     </Fragment>

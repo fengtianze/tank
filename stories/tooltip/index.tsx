@@ -24,7 +24,7 @@ storiesOf('Tooltip', module)
         [TooltipTrigger.Focus]: TooltipTrigger.Focus,
         [TooltipTrigger.Manual]: TooltipTrigger.Manual,
       },
-      Tooltip.defaultProps!.trigger,
+      Tooltip.defaultProps.trigger,
     )
     const theme = select(
       'theme',
@@ -35,7 +35,7 @@ storiesOf('Tooltip', module)
         [TooltipTheme.Danger]: TooltipTheme.Danger,
         [TooltipTheme.Empty]: TooltipTheme.Empty,
       },
-      Tooltip.defaultProps!.theme,
+      Tooltip.defaultProps.theme,
     )
     const placementOptions = ['auto', 'top', 'right', 'bottom', 'left'].reduce(
       (prev: string[], curr: string) => {
@@ -46,10 +46,10 @@ storiesOf('Tooltip', module)
     const placement = select(
       'placement',
       placementOptions,
-      Tooltip.defaultProps!.placement!,
+      Tooltip.defaultProps.placement,
     )
-    const offset = text('offset', Tooltip.defaultProps!.offset as string)
-    const arrow = boolean('arrow', Tooltip.defaultProps!.arrow!)
+    const offset = text('offset', Tooltip.defaultProps.offset as string)
+    const arrow = boolean('arrow', Tooltip.defaultProps.arrow)
 
     return (
       <Demo

@@ -214,3 +214,7 @@ $input-padding-hoz: 8px - $input-border-width;
 $input-medium-padding-hoz: 8px - $input-border-width;
 $input-medium-height: $height-medium;
 $input-medium-font-size: $font-size-regular;
+
+// Select
+$select-options-padding: $input-padding-hoz;
+$select-options-max-height: $input-medium-height * 8;

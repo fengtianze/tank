@@ -11,15 +11,17 @@ interface BaseProps {
 
 export type TooltipProps = TKProps<
   HTMLProps<HTMLDivElement>,
-  {
+  BaseProps & {
     content: ReactNode
     trigger: TooltipTrigger
-  } & BaseProps
+    onOpen: () => void
+    onClose: () => void
+  }
 >
 
 export type TooltipContentProps = TKProps<
   HTMLProps<HTMLDivElement>,
-  { refEl: Element } & BaseProps
+  BaseProps & { refEl: Element }
 >
 
 export enum TooltipTrigger {
@@ -40,7 +42,7 @@ export enum TooltipTheme {
 export interface TooltipRef {
   activated: boolean
   active: () => void
-  destory: () => void
+  destroy: () => void
   switchActivated: () => void
   triggerEl?: HTMLSpanElement
   tooltipEl?: HTMLDivElement
