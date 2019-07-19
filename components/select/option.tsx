@@ -26,3 +26,5 @@ export const Option = forwardRef<HTMLDivElement, OptionProps>((props, ref) => {
 Option.defaultProps = {
   className: '',
 }
+
+Option.displayName = 'TkOption'

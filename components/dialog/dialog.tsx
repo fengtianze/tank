@@ -14,6 +14,7 @@ import { ConfirmDialogProps, DialogProps } from './types'
 
 const bem = Bem.of('tk-dialog')
 
+// eslint-disable-next-line react/display-name
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const {
     visible,
@@ -67,6 +68,8 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 > & { confirm: (props: ConfirmDialogProps) => () => void }
 
 Dialog.defaultProps = { visible: false, className: '', mask: true }
+
+Dialog.displayName = 'TkDialog'
 
 Dialog.confirm = props => {
   const rootEl = document.createElement('div')

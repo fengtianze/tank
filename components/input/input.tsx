@@ -30,3 +30,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 Input.defaultProps = {
   className: '',
 }
+
+Input.displayName = 'TkInput'

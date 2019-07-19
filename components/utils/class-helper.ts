@@ -9,7 +9,7 @@ export class Bem {
     private modifierSeparator: string,
   ) {}
 
-  public b(...modifierArr: Array<string | undefined>): string {
+  public b(...modifierArr: string[]): string {
     return [this.block]
       .concat(
         modifierArr
@@ -19,7 +19,7 @@ export class Bem {
       .join(' ')
   }
 
-  public e(element: string, ...modifierArr: Array<string | undefined>): string {
+  public e(element: string, ...modifierArr: string[]): string {
     const eString = `${this.block}${this.elementSeparator}${element}`
     return [eString]
       .concat(
@@ -32,7 +32,7 @@ export class Bem {
 }
 
 export function assertClass(
-  asserts: { [key: string]: boolean | undefined },
+  asserts: { [key: string]: boolean },
   prefix = 'is-',
 ): string {
   return Object.keys(asserts)

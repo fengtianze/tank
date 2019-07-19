@@ -9,12 +9,12 @@ export function curry(fn: (...args: any[]) => any) {
   return caller(fn.length, [])
 }
 
-export function compose<T = any, R = any>(...fns: Array<(val: any) => any>) {
+export function compose<T = any, R = any>(...fns: ((val: any) => any)[]) {
   return (value: T): R => fns.reduceRight((val, fn) => fn(val), value)
 }
 
 export const trace = curry((tag: string, value: any) => {
-  // tslint:disable-next-line:no-console
+  // eslint-disable-next-line no-console
   console.log(tag, value)
   return value
 })

@@ -20,3 +20,5 @@ Icon.defaultProps = {
   name: '',
   className: '',
 }
+
+Icon.displayName = 'TkIcon'

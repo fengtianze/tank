@@ -13,7 +13,7 @@ import { TooltipContent } from './tooltip-content'
 import { TooltipProps, TooltipRef, TooltipTheme, TooltipTrigger } from './types'
 
 export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
-  const { children, content, trigger, onOpen, onClose, ...restProps } = props
+  const { children, content, ...restProps } = props
   const [triggerEl, setTriggerEl] = useState<HTMLSpanElement>()
   const [tooltipEl, setTooltipEl] = useState<HTMLDivElement>()
   const handleTriggerRefChange = useCallback(el => {
@@ -33,18 +33,6 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
     patchActivated,
   } = useActivatedControl(props, { triggerEl, tooltipEl })
 
-  useEffect(() => {
-    if (activated) {
-      if (onOpen) {
-        onOpen()
-      }
-    } else {
-      if (onClose) {
-        onClose()
-      }
-    }
-  }, [activated])
-
   useImperativeHandle(
     ref,
     () => {
@@ -63,7 +51,7 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
         tooltipEl,
       }
     },
-    [activated, triggerEl, tooltipEl],
+    [activated, patchActivated, triggerEl, tooltipEl],
   )
 
   return (
@@ -101,6 +89,8 @@ Tooltip.defaultProps = {
   offset: '0,8',
   arrow: true,
 }
+
+Tooltip.displayName = 'TkTooltip'
 
 function useActivatedControl(
   { trigger, onOpen, onClose }: TooltipProps,
@@ -142,27 +132,27 @@ function useActivatedControl(
     if (trigger === TooltipTrigger.Click) {
       patchActivated(prev => !prev)
     }
-  }, [trigger])
+  }, [trigger, patchActivated])
   const handleTriggerMouseEnter = useCallback(() => {
     if (trigger === TooltipTrigger.Hover) {
       patchActivated(true)
     }
-  }, [trigger])
+  }, [trigger, patchActivated])
   const handleTriggerMouseLeave = useCallback(() => {
     if (trigger === TooltipTrigger.Hover) {
       patchActivated(false)
     }
-  }, [trigger])
+  }, [trigger, patchActivated])
   const handleTriggerFocus = useCallback(() => {
     if (trigger === TooltipTrigger.Focus) {
       patchActivated(true)
     }
-  }, [trigger])
+  }, [trigger, patchActivated])
   const handleTriggerBlur = useCallback(() => {
     if (trigger === TooltipTrigger.Focus) {
       patchActivated(false)
     }
-  }, [trigger])
+  }, [trigger, patchActivated])
 
   useEffect(() => {
     const callback = (event: MouseEvent) => {
@@ -178,7 +168,7 @@ function useActivatedControl(
     }
     document.addEventListener('click', callback)
     return () => document.removeEventListener('click', callback)
-  }, [trigger, triggerEl, tooltipEl])
+  }, [trigger, triggerEl, tooltipEl, patchActivated])
 
   return {
     handleTriggerClick,

@@ -71,3 +71,5 @@ ConfirmDialog.defaultProps = {
   cancelText: 'cancel',
   confirmText: 'confirm',
 }
+
+ConfirmDialog.displayName = 'TkConfirmDialog'

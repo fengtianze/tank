@@ -9,8 +9,8 @@
     "test:clear": "jest --clearCache",
     "storybook": "start-storybook -p 9000 -c .storybook",
     "storybook:build": "build-storybook -c .storybook -o dist",
-    "lint": "tslint -p . -t stylish",
-    "lint:fix": "prettier --write '**/*.{ts,tsx,js,jsx,json,css,sass,scss}' && tslint -p . -t stylish --fix"
+    "lint": "eslint '**/*.{ts,tsx,js,jsx}'",
+    "lint:fix": "prettier --write '**/*.{ts,tsx,js,jsx,json,css,sass,scss}' && eslint --fix"
   },
   "peerDependencies": {
     "react": "^16.4.2",
@@ -29,6 +29,8 @@
     "@types/storybook__addon-actions": "^3.4.3",
     "@types/storybook__addon-knobs": "^5.0.3",
     "@types/storybook__react": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^24.8.0",
@@ -36,6 +38,10 @@
     "babel-runtime": "^6.26.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "husky": "^3.0.1",
     "jest": "^24.8.0",
     "lint-staged": "^9.2.0",
@@ -46,12 +52,6 @@
     "react-test-renderer": "^16.4.2",
     "sass-loader": "^7.1.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-plugin-prettier": "^2.0.0",
-    "tslint-react": "^4.0.0",
-    "tslint-react-hooks": "^2.2.1",
-    "tslint-sonarts": "^1.7.0",
     "typescript": "^3.5.3",
     "webpack": "^4.36.1"
   },

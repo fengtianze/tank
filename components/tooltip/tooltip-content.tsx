@@ -34,7 +34,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
     useImperativeHandle(
       ref,
       () => {
-        return popperEl!
+        return popperEl
       },
       [popperEl],
     )
@@ -69,3 +69,5 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
 TooltipContent.defaultProps = {
   className: '',
 }
+
+TooltipContent.displayName = 'TkTooltipContent'

@@ -16,7 +16,7 @@ const bem = Bem.of('tk-select')
 export const SelectContext = createContext<SelectContextType>({
   selectedValue: null,
   handleOptionSelected: () => {
-    // tslint-disable-next-line
+    // eslint-disable-line
   },
 })
 
@@ -79,3 +79,5 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
 Select.defaultProps = {
   className: '',
 }
+
+Select.displayName="TkSelect"

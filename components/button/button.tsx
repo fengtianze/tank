@@ -53,3 +53,5 @@ Button.defaultProps = {
   theme: ButtonTheme.Default,
   className: '',
 }
+
+Button.displayName = 'TkButton'

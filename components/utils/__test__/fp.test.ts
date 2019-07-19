@@ -91,7 +91,7 @@ describe('Pure Functions', () => {
   })
 
   describe('Trace', () => {
-    /* tslint:disable:no-console */
+    /* eslint-disable no-console */
     const nativeLog = console.log
     const mockLog = jest.fn()
 
@@ -118,7 +118,7 @@ describe('Pure Functions', () => {
       expect(mockLog.mock.calls.length).toBe(2)
       expect(mockLog).toBeCalledWith('tag:', 'value')
     })
-    /* tslint:enable:no-console */
+    /* eslint-enable no-console */
   })
 
   describe('DefaultTo', () => {
