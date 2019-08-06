@@ -1,4 +1,4 @@
-import { compose, curry, defaultTo, ternary, trace } from '../fp'
+const { compose, curry, defaultTo, ternary, trace } = require('../fns')
 
 describe('Pure Functions', () => {
   describe('Curry', () => {
@@ -13,7 +13,7 @@ describe('Pure Functions', () => {
     })
 
     it('should curry 1 arguments fn correctly', () => {
-      const testFn = jest.fn((a1: any) => a1)
+      const testFn = jest.fn(a1 => a1)
       const curriedFn = curry(testFn)
       expect(testFn).not.toBeCalled()
 
@@ -23,7 +23,7 @@ describe('Pure Functions', () => {
     })
 
     it('should curry 2 arguments fn correctly', () => {
-      const testFn = jest.fn((a1: any, a2: any) => [a1, a2])
+      const testFn = jest.fn((a1, a2) => [a1, a2])
       const curriedFn = curry(testFn)
       expect(testFn).not.toBeCalled()
 
@@ -37,7 +37,7 @@ describe('Pure Functions', () => {
     })
 
     it('should curry 3 arguments fn correctly', () => {
-      const testFn = jest.fn((a1: any, a2: any, a3: any) => [a1, a2, a3])
+      const testFn = jest.fn((a1, a2, a3) => [a1, a2, a3])
       const curriedFn = curry(testFn)
       expect(testFn).not.toBeCalled()
 
@@ -65,8 +65,8 @@ describe('Pure Functions', () => {
 
   describe('Compose', () => {
     it('should return current value', () => {
-      const add1 = jest.fn((val: number) => val + 1)
-      const divide2 = jest.fn((val: number) => val / 2)
+      const add1 = jest.fn(val => val + 1)
+      const divide2 = jest.fn(val => val / 2)
 
       const composeOne = compose(add1)
 
@@ -76,7 +76,7 @@ describe('Pure Functions', () => {
       expect(add1).toBeCalledWith(0)
       add1.mockClear()
 
-      const composeTwo = compose<number, number>(
+      const composeTwo = compose(
         add1,
         divide2,
       )
