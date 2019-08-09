@@ -9,15 +9,11 @@
 //   return caller(fn.length, [])
 // }
 const curry = (fn, ...args) => {
-  const caller = (...prevArgs) => {
-    return (...restArgs) => {
-      if (prevArgs.length + restArgs.length >= fn.length) {
-        return fn.call(null, ...prevArgs, ...restArgs)
-      } else {
-        return caller(...prevArgs, ...restArgs)
-      }
-    }
-  }
+  const caller = (...prevArgs) => (...restArgs) =>
+    prevArgs.length + restArgs.length >= fn.length
+      ? fn(...prevArgs, ...restArgs)
+      : caller(...prevArgs, ...restArgs)
+
   return caller(...args)
 }
 
