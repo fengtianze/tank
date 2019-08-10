@@ -17,9 +17,14 @@ const curry = (fn, ...args) => {
   return caller(...args)
 }
 
-const compose = (...fns) => {
-  return value => fns.reduceRight((val, fn) => fn(val), value)
-}
+const compose = (...fns) => (...seeds) =>
+  fns.reduceRight((arg, fn, index) => {
+    if (index + 1 === fns.length) {
+      return fn(...arg)
+    } else {
+      return fn(arg)
+    }
+  }, seeds)
 
 const trace = curry((tag, value) => {
   // eslint-disable-next-line no-console
