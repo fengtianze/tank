@@ -10,7 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: yarn storybook:build
+      run: |
+        yarn
+        yarn storybook:build
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
