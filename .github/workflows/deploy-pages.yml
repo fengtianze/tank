@@ -17,7 +17,7 @@ jobs:
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
       with:
-        repo: fengtianze/fengtianze.github.io/tank
+        repo: fengtianze/fengtianze.github.io
         target_branch: gh-pages
         build_dir: dist
       env:
