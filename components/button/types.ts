@@ -1,18 +1,18 @@
-import { HTMLProps } from 'react'
-import { TKProps } from '../types'
+import { HTMLProps } from 'react';
+import { TKProps } from '../types';
 
 export type ButtonProps = TKProps<
   HTMLProps<HTMLButtonElement>,
   {
-    type: 'submit' | 'reset' | 'button'
-    theme: ButtonTheme
-    plain: boolean
-    round: boolean
-    square: boolean
-    loading: boolean
-    disabled: boolean
+    type: 'submit' | 'reset' | 'button';
+    theme: ButtonTheme;
+    plain: boolean;
+    round: boolean;
+    square: boolean;
+    loading: boolean;
+    disabled: boolean;
   }
->
+>;
 
 export enum ButtonTheme {
   Default = 'default',

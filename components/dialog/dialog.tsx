@@ -4,15 +4,15 @@ import React, {
   Fragment,
   PropsWithoutRef,
   RefAttributes,
-} from 'react'
-import ReactDOM, { createPortal } from 'react-dom'
-import { Icon } from '../icon'
-import { Bem } from '../utils/class-helper'
-import containerEl from '../utils/overlay'
-import { ConfirmDialog } from './confirm-dialog'
-import { ConfirmDialogProps, DialogProps } from './types'
+} from 'react';
+import ReactDOM, { createPortal } from 'react-dom';
+import { Icon } from '../icon';
+import { Bem } from '../utils/class-helper';
+import containerEl from '../utils/overlay';
+import { ConfirmDialog } from './confirm-dialog';
+import { ConfirmDialogProps, DialogProps } from './types';
 
-const bem = Bem.of('tk-dialog')
+const bem = Bem.of('tk-dialog');
 
 // eslint-disable-next-line react/display-name
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
@@ -28,9 +28,9 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     width,
     onClose,
     ...restProps
-  } = props
+  } = props;
 
-  const classString = `${bem.b()} ${className}`
+  const classString = `${bem.b()} ${className}`;
 
   return visible
     ? createPortal(
@@ -62,41 +62,41 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         </Fragment>,
         containerEl,
       )
-    : null
+    : null;
 }) as ForwardRefExoticComponent<
   PropsWithoutRef<DialogProps> & RefAttributes<HTMLDivElement>
-> & { confirm: (props: ConfirmDialogProps) => () => void }
+> & { confirm: (props: ConfirmDialogProps) => () => void };
 
-Dialog.defaultProps = { visible: false, className: '', mask: true }
+Dialog.defaultProps = { visible: false, className: '', mask: true };
 
-Dialog.displayName = 'TkDialog'
+Dialog.displayName = 'TkDialog';
 
-Dialog.confirm = props => {
-  const rootEl = document.createElement('div')
-  containerEl.appendChild(rootEl)
+Dialog.confirm = (props) => {
+  const rootEl = document.createElement('div');
+  containerEl.appendChild(rootEl);
 
   const destory = () => {
-    ReactDOM.unmountComponentAtNode(rootEl)
-    containerEl.removeChild(rootEl)
-  }
+    ReactDOM.unmountComponentAtNode(rootEl);
+    containerEl.removeChild(rootEl);
+  };
 
   const config: ConfirmDialogProps = {
     ...props,
     onCancel: () => {
-      destory()
+      destory();
       if (props.onCancel) {
-        props.onCancel()
+        props.onCancel();
       }
     },
     onConfirm: () => {
-      destory()
+      destory();
       if (props.onConfirm) {
-        props.onConfirm()
+        props.onConfirm();
       }
     },
-  }
+  };
 
-  ReactDOM.render(<ConfirmDialog {...config} />, rootEl)
+  ReactDOM.render(<ConfirmDialog {...config} />, rootEl);
 
-  return destory
-}
+  return destory;
+};

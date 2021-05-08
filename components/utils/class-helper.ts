@@ -1,6 +1,6 @@
 export class Bem {
-  public static of(block: string, es: string = '__', ms: string = '--') {
-    return new Bem(block, es, ms)
+  static of(block: string, es = '__', ms = '--') {
+    return new Bem(block, es, ms);
   }
 
   constructor(
@@ -9,25 +9,27 @@ export class Bem {
     private modifierSeparator: string,
   ) {}
 
-  public b(...modifierArr: string[]): string {
+  b(...modifierArr: string[]): string {
     return [this.block]
       .concat(
         modifierArr
-          .filter(m => !!m)
-          .map(modifier => `${this.block}${this.modifierSeparator}${modifier}`),
+          .filter((m) => !!m)
+          .map(
+            (modifier) => `${this.block}${this.modifierSeparator}${modifier}`,
+          ),
       )
-      .join(' ')
+      .join(' ');
   }
 
-  public e(element: string, ...modifierArr: string[]): string {
-    const eString = `${this.block}${this.elementSeparator}${element}`
+  e(element: string, ...modifierArr: string[]): string {
+    const eString = `${this.block}${this.elementSeparator}${element}`;
     return [eString]
       .concat(
         modifierArr
-          .filter(m => !!m)
-          .map(modifier => `${eString}${this.modifierSeparator}${modifier}`),
+          .filter((m) => !!m)
+          .map((modifier) => `${eString}${this.modifierSeparator}${modifier}`),
       )
-      .join(' ')
+      .join(' ');
   }
 }
 
@@ -36,7 +38,7 @@ export function assertClass(
   prefix = 'is-',
 ): string {
   return Object.keys(asserts)
-    .filter(key => asserts[key])
-    .map(key => `${prefix}${key}`)
-    .join(' ')
+    .filter((key) => asserts[key])
+    .map((key) => `${prefix}${key}`)
+    .join(' ');
 }

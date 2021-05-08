@@ -1,9 +1,9 @@
-import React, { forwardRef, MouseEvent } from 'react'
-import { Icon } from '../icon'
-import { assertClass, Bem } from '../utils/class-helper'
-import { ButtonProps, ButtonTheme } from './types'
+import React, { forwardRef, MouseEvent } from 'react';
+import { Icon } from '../icon';
+import { assertClass, Bem } from '../utils/class-helper';
+import { ButtonProps, ButtonTheme } from './types';
 
-const bem = Bem.of('tk-button')
+const bem = Bem.of('tk-button');
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
@@ -17,19 +17,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       onClick,
       ...restProps
-    } = props
+    } = props;
 
     const classString = `${bem.b(theme)} ${assertClass({
       loading,
       plain,
       round,
       square,
-    })} ${className}`
+    })} ${className}`;
+
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
       if (onClick) {
-        onClick(event)
+        onClick(event);
       }
-    }
+    };
 
     return (
       <button
@@ -45,13 +46,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         ) : null}
       </button>
-    )
+    );
   },
-)
+);
 
 Button.defaultProps = {
   theme: ButtonTheme.Default,
   className: '',
-}
+};
 
-Button.displayName = 'TkButton'
+Button.displayName = 'TkButton';

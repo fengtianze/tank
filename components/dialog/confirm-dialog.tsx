@@ -1,9 +1,9 @@
-import React, { FC, Fragment, useState } from 'react'
-import { Button, ButtonTheme } from '../button'
-import { Dialog } from './dialog'
-import { ConfirmDialogProps } from './types'
+import React, { FC, Fragment, useState } from 'react';
+import { Button, ButtonTheme } from '../button';
+import { Dialog } from './dialog';
+import { ConfirmDialogProps } from './types';
 
-export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
+export const ConfirmDialog: FC<ConfirmDialogProps> = (props) => {
   const {
     title,
     content,
@@ -12,39 +12,39 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
     beforeConfirm,
     onCancel,
     onConfirm,
-  } = props
+  } = props;
 
-  const [visible, setVisible] = useState(true)
-  const [confirming, setConfirming] = useState(false)
+  const [visible, setVisible] = useState(true);
+  const [confirming, setConfirming] = useState(false);
 
   const close = (ok: boolean) => {
-    setVisible(false)
+    setVisible(false);
     if (ok) {
-      return onConfirm && onConfirm()
+      return onConfirm && onConfirm();
     } else {
-      return onCancel && onCancel()
+      return onCancel && onCancel();
     }
-  }
+  };
 
   const cancel = () => {
-    close(false)
-  }
+    close(false);
+  };
 
   const confirm = () => {
     if (beforeConfirm) {
-      setConfirming(true)
+      setConfirming(true);
       beforeConfirm()
         .then(() => {
-          setConfirming(false)
-          close(true)
+          setConfirming(false);
+          close(true);
         })
         .catch(() => {
-          setConfirming(false)
-        })
+          setConfirming(false);
+        });
     } else {
-      close(true)
+      close(true);
     }
-  }
+  };
 
   return (
     <Dialog
@@ -64,12 +64,12 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
         </Fragment>
       }
     />
-  )
-}
+  );
+};
 
 ConfirmDialog.defaultProps = {
   cancelText: 'cancel',
   confirmText: 'confirm',
-}
+};
 
-ConfirmDialog.displayName = 'TkConfirmDialog'
+ConfirmDialog.displayName = 'TkConfirmDialog';

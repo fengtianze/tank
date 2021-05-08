@@ -1,28 +1,28 @@
-import { Placement } from 'popper.js'
-import { HTMLProps, ReactNode } from 'react'
-import { TKProps } from '../types'
+import { Placement } from '@popperjs/core';
+import { HTMLProps, ReactNode } from 'react';
+import { TKProps } from '../types';
 
 interface BaseProps {
-  theme: TooltipTheme
-  placement: TooltipPlacement
-  offset: number | string
-  arrow: boolean
+  theme: TooltipTheme;
+  placement: TooltipPlacement;
+  offset: [number, number];
+  arrow: boolean;
 }
 
 export type TooltipProps = TKProps<
   HTMLProps<HTMLDivElement>,
   BaseProps & {
-    content: ReactNode
-    trigger: TooltipTrigger
-    onOpen: () => void
-    onClose: () => void
+    content: ReactNode;
+    trigger: TooltipTrigger;
+    onOpen: () => void;
+    onClose: () => void;
   }
->
+>;
 
 export type TooltipContentProps = TKProps<
   HTMLProps<HTMLDivElement>,
   BaseProps & { refEl: Element }
->
+>;
 
 export enum TooltipTrigger {
   Hover = 'hover',
@@ -40,12 +40,12 @@ export enum TooltipTheme {
 }
 
 export interface TooltipRef {
-  activated: boolean
-  active: () => void
-  destroy: () => void
-  switchActivated: () => void
-  triggerEl?: HTMLSpanElement
-  tooltipEl?: HTMLDivElement
+  activated: boolean;
+  active: () => void;
+  destroy: () => void;
+  switchActivated: () => void;
+  triggerEl?: HTMLSpanElement;
+  tooltipEl?: HTMLDivElement;
 }
 
-export type TooltipPlacement = Placement
+export type TooltipPlacement = Placement;

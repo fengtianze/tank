@@ -1,29 +1,29 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, text, withKnobs } from '@storybook/addon-knobs'
-import { storiesOf } from '@storybook/react'
-import React, { Fragment, useState } from 'react'
-import { Button, ButtonTheme, Dialog } from '../../components'
+import { action } from '@storybook/addon-actions';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React, { Fragment, useState } from 'react';
+import { Button, ButtonTheme, Dialog } from '../../components';
 
 storiesOf('Dialog', module)
   .addDecorator(withKnobs)
   .add('dialog', () => {
-    const width = text('width', '')
-    const mask = boolean('mask', true)
+    const width = text('width', '');
+    const mask = boolean('mask', true);
 
-    return <DialogDemo width={width} mask={mask} />
+    return <DialogDemo width={width} mask={mask} />;
   })
   .add('confirm dialog', () => {
-    return <ConfirmDialogDemo />
-  })
+    return <ConfirmDialogDemo />;
+  });
 
 function DialogDemo(props: { width: string; mask: boolean }) {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
   const openDialog = () => {
-    setVisible(true)
-  }
+    setVisible(true);
+  };
   const closeDialog = () => {
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   return (
     <div>
@@ -57,11 +57,11 @@ function DialogDemo(props: { width: string; mask: boolean }) {
         best-of-breed ideas from the community.
       </Dialog>
     </div>
-  )
+  );
 }
 
 function ConfirmDialogDemo() {
-  const log = action('confirm dialog closed')
+  const log = action('confirm dialog closed');
 
   const confirmDialog = () => {
     Dialog.confirm({
@@ -71,14 +71,14 @@ function ConfirmDialogDemo() {
       cancelText: 'NO',
       confirmText: 'OK',
       beforeConfirm: () => {
-        return new Promise(resolve => {
-          setTimeout(resolve, 1000)
-        })
+        return new Promise((resolve) => {
+          setTimeout(resolve, 1000);
+        });
       },
       onCancel: () => log('cancel'),
       onConfirm: () => log('comfirm'),
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -86,5 +86,5 @@ function ConfirmDialogDemo() {
         confirm dialog
       </Button>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import { action } from '@storybook/addon-actions'
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
-import { storiesOf } from '@storybook/react'
-import React, { useCallback, useState } from 'react'
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React, { useCallback, useState } from 'react';
 import {
   Button,
   ButtonTheme,
@@ -11,7 +11,7 @@ import {
   TooltipRef,
   TooltipTheme,
   TooltipTrigger,
-} from '../../components'
+} from '../../components';
 
 storiesOf('Tooltip', module)
   .addDecorator(withKnobs)
@@ -25,7 +25,7 @@ storiesOf('Tooltip', module)
         [TooltipTrigger.Manual]: TooltipTrigger.Manual,
       },
       Tooltip.defaultProps.trigger,
-    )
+    );
     const theme = select(
       'theme',
       {
@@ -36,20 +36,20 @@ storiesOf('Tooltip', module)
         [TooltipTheme.Empty]: TooltipTheme.Empty,
       },
       Tooltip.defaultProps.theme,
-    )
+    );
     const placementOptions = ['auto', 'top', 'right', 'bottom', 'left'].reduce(
       (prev: string[], curr: string) => {
-        return prev.concat(curr, curr + '-start', curr + '-end')
+        return prev.concat(curr, curr + '-start', curr + '-end');
       },
       [],
-    )
+    );
     const placement = select(
       'placement',
       placementOptions,
       Tooltip.defaultProps.placement,
-    )
-    const offset = text('offset', Tooltip.defaultProps.offset as string)
-    const arrow = boolean('arrow', Tooltip.defaultProps.arrow)
+    );
+    const offset = text('offset', Tooltip.defaultProps.offset as string);
+    const arrow = boolean('arrow', Tooltip.defaultProps.arrow);
 
     return (
       <Demo
@@ -59,22 +59,22 @@ storiesOf('Tooltip', module)
         offset={offset}
         arrow={arrow}
       />
-    )
-  })
+    );
+  });
 
-const refChangeLog = action('tooltipRef changed')
+const refChangeLog = action('tooltipRef changed');
 
 function Demo(props: TooltipProps) {
-  const [tooltipRef, setTooltipRef] = useState<TooltipRef>()
-  const handleTooltipRefChange = useCallback(ref => {
-    refChangeLog(ref)
-    setTooltipRef(ref)
-  }, [])
+  const [tooltipRef, setTooltipRef] = useState<TooltipRef>();
+  const handleTooltipRefChange = useCallback((ref) => {
+    refChangeLog(ref);
+    setTooltipRef(ref);
+  }, []);
   const handleClick = useCallback(() => {
     if (props.trigger === TooltipTrigger.Manual && tooltipRef) {
-      tooltipRef.switchActivated()
+      tooltipRef.switchActivated();
     }
-  }, [tooltipRef, props.trigger])
+  }, [tooltipRef, props.trigger]);
 
   return (
     <div style={{ padding: '50px' }}>
@@ -84,5 +84,5 @@ function Demo(props: TooltipProps) {
         </Button>
       </Tooltip>
     </div>
-  )
+  );
 }

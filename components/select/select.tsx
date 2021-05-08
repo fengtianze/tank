@@ -6,50 +6,50 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from 'react'
-import { Tooltip, TooltipRef, TooltipTheme, TooltipTrigger } from '../tooltip'
-import { Bem } from '../utils/class-helper'
-import { SelectContextType, SelectProps } from './types'
-import { Icon } from '../icon'
+} from 'react';
+import { Tooltip, TooltipRef, TooltipTheme, TooltipTrigger } from '../tooltip';
+import { Bem } from '../utils/class-helper';
+import { SelectContextType, SelectProps } from './types';
+import { Icon } from '../icon';
 
-const bem = Bem.of('tk-select')
+const bem = Bem.of('tk-select');
 
 export const SelectContext = createContext<SelectContextType>({
   selectedValue: null,
   handleOptionSelected: () => {
     // eslint-disable-line
   },
-})
+});
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
-  const { className, value, children, onValueChange, ...restProps } = props
+  const { className, value, children, onValueChange, ...restProps } = props;
 
-  const classString = `${bem.b()} ${className}`
-  const [tooltipRef, setTooltipRef] = useState<TooltipRef>()
-  const [compWidth, setCompWidth] = useState<string>('auto')
-  const compRef = useRef<HTMLDivElement>(null)
+  const classString = `${bem.b()} ${className}`;
+  const [tooltipRef, setTooltipRef] = useState<TooltipRef>();
+  const [compWidth, setCompWidth] = useState<string>('auto');
+  const compRef = useRef<HTMLDivElement>(null);
 
   useImperativeHandle(ref, () => {
-    return compRef.current
-  })
+    return compRef.current;
+  });
 
   const handleOptionSelected = useCallback(
     (v: any) => {
       if (onValueChange) {
-        onValueChange(v)
+        onValueChange(v);
       }
       if (tooltipRef) {
-        tooltipRef.destroy()
+        tooltipRef.destroy();
       }
     },
     [onValueChange, tooltipRef],
-  )
-  const handleTooltipRefChange = useCallback(ins => {
-    setTooltipRef(ins)
-  }, [])
+  );
+  const handleTooltipRefChange = useCallback((ins) => {
+    setTooltipRef(ins);
+  }, []);
   const handleTooltipOpen = useCallback(() => {
-    setCompWidth(compRef.current.offsetWidth + 'px')
-  }, [])
+    setCompWidth(compRef.current.offsetWidth + 'px');
+  }, []);
 
   return (
     <Fragment>
@@ -75,11 +75,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
         <Icon className={bem.e('arrow')} name="tk-angle-down"></Icon>
       </div>
     </Fragment>
-  )
-})
+  );
+});
 
 Select.defaultProps = {
   className: '',
-}
+};
 
-Select.displayName = 'TkSelect'
+Select.displayName = 'TkSelect';

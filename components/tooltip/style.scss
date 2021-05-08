@@ -57,7 +57,7 @@
     @include theme-colors($color-danger, $color-danger, $color-white);
   }
 
-  &[x-placement^='bottom'] & {
+  &[data-popper-placement^='bottom'] & {
     &__arrow {
       width: $arrow-outer;
       height: $arrow-outer/2;
@@ -69,7 +69,7 @@
       }
     }
   }
-  &[x-placement^='top'] & {
+  &[data-popper-placement^='top'] & {
     &__arrow {
       width: $arrow-outer;
       height: $arrow-outer/2;
@@ -81,7 +81,7 @@
       }
     }
   }
-  &[x-placement^='left'] & {
+  &[data-popper-placement^='left'] & {
     &__arrow {
       width: $arrow-outer/2;
       height: $arrow-outer;
@@ -93,7 +93,7 @@
       }
     }
   }
-  &[x-placement^='right'] & {
+  &[data-popper-placement^='right'] & {
     &__arrow {
       width: $arrow-outer/2;
       height: $arrow-outer;

@@ -1,4 +1,4 @@
-import Popper, { Modifiers } from 'popper.js'
+import { createPopper, Modifier } from '@popperjs/core';
 import React, {
   forwardRef,
   useCallback,
@@ -6,11 +6,11 @@ import React, {
   useLayoutEffect,
   useRef,
   useState,
-} from 'react'
-import { Bem } from '../utils/class-helper'
-import { TooltipContentProps, TooltipTheme } from './types'
+} from 'react';
+import { Bem } from '../utils/class-helper';
+import { TooltipContentProps, TooltipTheme } from './types';
 
-const bem = Bem.of('tk-tooltip')
+const bem = Bem.of('tk-tooltip');
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
   (props, ref) => {
@@ -23,35 +23,43 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
       offset,
       arrow,
       ...restProps
-    } = props
-    const classString = `${bem.b(theme)} ${className}`
-    const [popperEl, setPopperEl] = useState<HTMLDivElement>()
+    } = props;
+    const classString = `${bem.b(theme)} ${className}`;
+    const [popperEl, setPopperEl] = useState<HTMLDivElement>();
     const handlePopperRefChange = useCallback((el: HTMLDivElement) => {
-      setPopperEl(el)
-    }, [])
-    const arrowRef = useRef<HTMLDivElement>(null)
+      setPopperEl(el);
+    }, []);
+    const arrowRef = useRef<HTMLDivElement>(null);
 
     useImperativeHandle(
       ref,
       () => {
-        return popperEl
+        return popperEl;
       },
       [popperEl],
-    )
+    );
     useLayoutEffect(() => {
       if (!refEl || !popperEl) {
-        return
+        return;
       }
-      const modifiers: Modifiers = { offset: { offset } }
+      const modifiers: Array<Partial<Modifier<any, any>>> = [
+        {
+          name: 'offset',
+          options: { offset },
+        },
+      ];
       if (arrowRef.current) {
-        modifiers.arrow = { element: arrowRef.current }
+        modifiers.push({
+          name: 'arrow',
+          options: { element: arrowRef.current },
+        });
       }
-      const popper = new Popper(refEl, popperEl, {
+      const popper = createPopper(refEl, popperEl, {
         placement,
         modifiers,
-      })
-      return popper.destroy.bind(popper)
-    }, [refEl, popperEl, placement, offset])
+      });
+      return popper.destroy.bind(popper);
+    }, [refEl, popperEl, placement, offset]);
 
     return theme === TooltipTheme.Empty ? (
       <div {...restProps} ref={handlePopperRefChange}>
@@ -62,12 +70,12 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
         <div className={bem.e('content')}>{children}</div>
         {arrow && <div ref={arrowRef} className={bem.e('arrow')} />}
       </div>
-    )
+    );
   },
-)
+);
 
 TooltipContent.defaultProps = {
   className: '',
-}
+};
 
-TooltipContent.displayName = 'TkTooltipContent'
+TooltipContent.displayName = 'TkTooltipContent';

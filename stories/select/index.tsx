@@ -1,23 +1,23 @@
-import { action } from '@storybook/addon-actions'
-import { withKnobs } from '@storybook/addon-knobs'
-import { storiesOf } from '@storybook/react'
-import React, { useCallback, useState } from 'react'
-import { Option, Select } from '../../components'
+import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import React, { useCallback, useState } from 'react';
+import { Option, Select } from '../../components';
 
 storiesOf('Select', module)
   .addDecorator(withKnobs)
   .add('select', () => {
-    return <Demo />
-  })
+    return <Demo />;
+  });
 
-const valueChangeLog = action('value change')
+const valueChangeLog = action('value change');
 
 function Demo() {
-  const [value, setValue] = useState('k8s')
-  const handleValueChange = useCallback(val => {
-    setValue(val)
-    valueChangeLog(val)
-  }, [])
+  const [value, setValue] = useState('k8s');
+  const handleValueChange = useCallback((val) => {
+    setValue(val);
+    valueChangeLog(val);
+  }, []);
 
   return (
     <div>
@@ -28,5 +28,5 @@ function Demo() {
         <Option value="swarm">swarm</Option>
       </Select>
     </div>
-  )
+  );
 }

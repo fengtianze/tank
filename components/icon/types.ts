@@ -1,9 +1,9 @@
-import { SVGProps } from 'react'
-import { TKProps } from '../types'
+import { SVGProps } from 'react';
+import { TKProps } from '../types';
 
 export type IconProps = TKProps<
   SVGProps<SVGSVGElement>,
   {
-    name: string
+    name: string;
   }
->
+>;

@@ -1,4 +1,4 @@
-const { defaults } = require('jest-config')
+const { defaults } = require('jest-config');
 
 module.exports = {
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
@@ -7,4 +7,4 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-}
+};

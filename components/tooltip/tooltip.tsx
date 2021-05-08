@@ -6,22 +6,27 @@ import React, {
   useEffect,
   useImperativeHandle,
   useState,
-} from 'react'
-import { createPortal } from 'react-dom'
-import containerEl from '../utils/overlay'
-import { TooltipContent } from './tooltip-content'
-import { TooltipProps, TooltipRef, TooltipTheme, TooltipTrigger } from './types'
+} from 'react';
+import { createPortal } from 'react-dom';
+import containerEl from '../utils/overlay';
+import { TooltipContent } from './tooltip-content';
+import {
+  TooltipProps,
+  TooltipRef,
+  TooltipTheme,
+  TooltipTrigger,
+} from './types';
 
 export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
-  const { children, content, ...restProps } = props
-  const [triggerEl, setTriggerEl] = useState<HTMLSpanElement>()
-  const [tooltipEl, setTooltipEl] = useState<HTMLDivElement>()
-  const handleTriggerRefChange = useCallback(el => {
-    setTriggerEl(el)
-  }, [])
-  const handlePopperRefChange = useCallback(el => {
-    setTooltipEl(el)
-  }, [])
+  const { children, content, ...restProps } = props;
+  const [triggerEl, setTriggerEl] = useState<HTMLSpanElement>();
+  const [tooltipEl, setTooltipEl] = useState<HTMLDivElement>();
+  const handleTriggerRefChange = useCallback((el) => {
+    setTriggerEl(el);
+  }, []);
+  const handlePopperRefChange = useCallback((el) => {
+    setTooltipEl(el);
+  }, []);
 
   const {
     handleTriggerClick,
@@ -31,7 +36,7 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
     handleTriggerBlur,
     activated,
     patchActivated,
-  } = useActivatedControl(props, { triggerEl, tooltipEl })
+  } = useActivatedControl(props, { triggerEl, tooltipEl });
 
   useImperativeHandle(
     ref,
@@ -39,20 +44,20 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
       return {
         activated,
         active: () => {
-          patchActivated(true)
+          patchActivated(true);
         },
         destroy: () => {
-          patchActivated(false)
+          patchActivated(false);
         },
         switchActivated: () => {
-          patchActivated(prev => !prev)
+          patchActivated((prev) => !prev);
         },
         triggerEl,
         tooltipEl,
-      }
+      };
     },
     [activated, patchActivated, triggerEl, tooltipEl],
-  )
+  );
 
   return (
     <Fragment>
@@ -79,18 +84,18 @@ export const Tooltip = forwardRef<TooltipRef, TooltipProps>((props, ref) => {
           containerEl,
         )}
     </Fragment>
-  )
-})
+  );
+});
 
 Tooltip.defaultProps = {
   trigger: TooltipTrigger.Click,
   theme: TooltipTheme.Default,
   placement: 'top',
-  offset: '0,8',
+  offset: [0, 8],
   arrow: true,
-}
+};
 
-Tooltip.displayName = 'TkTooltip'
+Tooltip.displayName = 'TkTooltip';
 
 function useActivatedControl(
   { trigger, onOpen, onClose }: TooltipProps,
@@ -98,61 +103,61 @@ function useActivatedControl(
     triggerEl,
     tooltipEl,
   }: {
-    triggerEl: HTMLSpanElement
-    tooltipEl: HTMLDivElement
+    triggerEl: HTMLSpanElement;
+    tooltipEl: HTMLDivElement;
   },
 ) {
-  const [activated, setActivated] = useState<boolean>(false)
+  const [activated, setActivated] = useState<boolean>(false);
 
   const patchActivated = useCallback(
     (action: SetStateAction<boolean>) => {
-      setActivated(prev => {
-        let val: boolean
+      setActivated((prev) => {
+        let val: boolean;
         if (action instanceof Function) {
-          val = action(prev)
+          val = action(prev);
         } else {
-          val = action
+          val = action;
         }
         if (val) {
           if (onOpen) {
-            onOpen()
+            onOpen();
           }
         } else {
           if (onClose) {
-            onClose()
+            onClose();
           }
         }
-        return val
-      })
+        return val;
+      });
     },
     [onOpen, onClose],
-  )
+  );
 
   const handleTriggerClick = useCallback(() => {
     if (trigger === TooltipTrigger.Click) {
-      patchActivated(prev => !prev)
+      patchActivated((prev) => !prev);
     }
-  }, [trigger, patchActivated])
+  }, [trigger, patchActivated]);
   const handleTriggerMouseEnter = useCallback(() => {
     if (trigger === TooltipTrigger.Hover) {
-      patchActivated(true)
+      patchActivated(true);
     }
-  }, [trigger, patchActivated])
+  }, [trigger, patchActivated]);
   const handleTriggerMouseLeave = useCallback(() => {
     if (trigger === TooltipTrigger.Hover) {
-      patchActivated(false)
+      patchActivated(false);
     }
-  }, [trigger, patchActivated])
+  }, [trigger, patchActivated]);
   const handleTriggerFocus = useCallback(() => {
     if (trigger === TooltipTrigger.Focus) {
-      patchActivated(true)
+      patchActivated(true);
     }
-  }, [trigger, patchActivated])
+  }, [trigger, patchActivated]);
   const handleTriggerBlur = useCallback(() => {
     if (trigger === TooltipTrigger.Focus) {
-      patchActivated(false)
+      patchActivated(false);
     }
-  }, [trigger, patchActivated])
+  }, [trigger, patchActivated]);
 
   useEffect(() => {
     const callback = (event: MouseEvent) => {
@@ -163,12 +168,12 @@ function useActivatedControl(
         !triggerEl.contains(event.target as HTMLElement) &&
         !tooltipEl.contains(event.target as HTMLElement)
       ) {
-        patchActivated(false)
+        patchActivated(false);
       }
-    }
-    document.addEventListener('click', callback)
-    return () => document.removeEventListener('click', callback)
-  }, [trigger, triggerEl, tooltipEl, patchActivated])
+    };
+    document.addEventListener('click', callback);
+    return () => document.removeEventListener('click', callback);
+  }, [trigger, triggerEl, tooltipEl, patchActivated]);
 
   return {
     handleTriggerClick,
@@ -178,5 +183,5 @@ function useActivatedControl(
     handleTriggerBlur,
     activated,
     patchActivated,
-  }
+  };
 }
