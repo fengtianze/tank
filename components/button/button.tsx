@@ -26,9 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       square,
     })} ${className}`
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-      if (onClick) {
-        onClick(event)
-      }
+      onClick(event)
     }
 
     return (
